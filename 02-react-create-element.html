@@ -1,0 +1,36 @@
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js""></script>
+  <script type="text/javascript">
+    const rootElement = document.getElementById('root')
+
+    const element = React.createElement('div', {
+      children: 'Hello World',
+      className: 'container'
+    })
+
+    const asArrayElement = React.createElement('div', {
+      children: ['Hello World', 'Good bye World'],
+      className: 'container'
+    })
+
+    const paramAsChildrenElement = React.createElement('div', {
+      className: 'container'
+    }, 'Hello World')
+
+    const paramsAsChildrenElement = React.createElement('div', {
+      className: 'container'
+    },
+      'Hello World',
+      'Good bye World'
+    )
+
+    const reactChildrenElement = React.createElement('div', {
+      children: React.createElement('span', null, 'Hello', 'World'),
+      className: 'container'
+    })
+
+    ReactDOM.render(element, rootElement)
+  </script>
+</body>
