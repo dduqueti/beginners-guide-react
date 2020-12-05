@@ -1,0 +1,34 @@
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js""></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    // Reuse function for parameterized div (Javascript Workaround)
+    const message = (props) => <div className="message">{props.msg}</div>
+
+    const element = (
+      <div className="container">
+        {message({ msg: 'Hello World' })}
+        {message({ msg: 'Goodbye World' })}
+      </div>
+    )
+
+    // React Components
+    const Message = (props) => <div className="message">{props.children}{props.msg}</div>
+
+    const reactElement = (
+      <div className="container">
+        <Message>
+          Hello World
+          <Message msg="What's up" />
+          <Message children="We are using props" />
+          <Message>Goodbye World</Message>
+          <span>Hey there!</span>
+        </Message>
+      </div>
+    )
+
+    ReactDOM.render(reactElement, document.getElementById('root'))
+  </script>
+</body>
