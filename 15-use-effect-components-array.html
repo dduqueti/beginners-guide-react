@@ -10,10 +10,12 @@
           () => window.localStorage.getItem('name') || ''
         )
 
-        // Ran everytime the component is rendered
+        // Second parameter of useEffects accepts attributes to track,
+        // doesn't render if another key of the state changes.
+        // Prevents unneeded renders
         React.useEffect(() => {
           window.localStorage.setItem('name', name)
-        })
+        }, [name])
 
         const handleChange = event => setName(event.target.value)
         return (
@@ -27,6 +29,16 @@
         )
       }
 
-      ReactDOM.render(<Greeting />, document.getElementById('root'))
+      function App() {
+        const [count, setCount] = React.useState(0)
+        return (
+          <>
+            <button onClick={() => setCount(c => c + 1)}>{count}</button>
+            <Greeting />
+          </>
+        )
+      }
+
+      ReactDOM.render(<App />, document.getElementById('root'))
     </script>
 </body>
