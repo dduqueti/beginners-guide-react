@@ -47,13 +47,24 @@
       <div>
         <Box size="small" style={{ backgroundColor: 'lightblue' }}>
           small lightblue box
-      </Box>
+        </Box>
+        {
+          /*
+            We can override using className and not providing size as the
+             the function will evaluate the size from the className
+          */
+        }
+        {
+          /* <Box className="box--large" style={{ backgroundColor: 'lightblue' }}>
+          small lightblue box
+        </Box> */
+        }
         <Box size="medium" style={{ backgroundColor: 'pink' }}>
           medium pink box
-      </Box>
+        </Box>
         <Box size="large" style={{ backgroundColor: 'orange' }}>
           large orange box
-      </Box>
+        </Box>
         <Box>sizeless box</Box>
       </div>
     )

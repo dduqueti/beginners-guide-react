@@ -6,14 +6,40 @@
     <script type="text/babel">
       function Greeting() {
         const [name, setName] = React.useState('')
-        const handleChange = event => setName(event.target.value)
+        const [lastname, setLastName] = React.useState('')
+
+        // Example: Use event attributes to handle specific inputs
+        // Another function can be used too
+        const handleChange = (event) => {
+          if (event.target.id === 'name') {
+            setName(event.target.value)
+          } else if (event.target.id === 'lastname') {
+            setLastName(event.target.value)
+          }
+        }
+
+        // Example: use a map to get the setter function
+        // const handleChange = (event) => {
+        //   const setters = {
+        //     name: setName,
+        //     lastname: setLastName
+        //   }
+        //
+        //   const setter = setters[event.target.id]
+        //   if (setter) {
+        //     setter(event.target.value)
+        //   }
+        // }
+
         return (
           <div>
             <form>
               <label htmlFor="name">Name: </label>
               <input onChange={handleChange} type="text" id="name" />
+              <label htmlFor="name">Last name: </label>
+              <input onChange={handleChange} type="text" id="lastname" />
             </form>
-            { name ? <strong>Hello {name}</strong> : 'Please type your name:' }
+            { name ? <strong>Hello {name} {lastname}</strong> : 'Please type your name:' }
           </div>
         )
       }
